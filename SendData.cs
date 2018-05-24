@@ -84,6 +84,7 @@ namespace DJ_Connect
             myConnection.Open();
 
             SqlCommand com = new SqlCommand();
+            com.Parameters.AddWithValue("@eventRecordID", eventRecordID);
 
             com.CommandType = CommandType.StoredProcedure;
             com.CommandText = "DeleteEventRecord";

@@ -65,10 +65,10 @@
                     <!-- Entries & Search -->
                     <div class="row" style="padding-bottom: 10px">
                                 <div class="col-sm-4" id="ShowEntriesDropdown">
-                                    <div class="dataTables_length" id="dataTables-example_length">
+                                    <div id="dataTables-example_length">
                                         <label style="display:inline-flex">
                                             Show
-                                        <asp:DropDownList runat="server" AutoPostBack="true" ID="ddlSelectPageSize" CssClass="form-control input-sm">
+                                        <asp:DropDownList runat="server" AutoPostBack="true" ID="ddlSelectPageSize" CssClass="form-control input-sm ddlSelectPageSize">
                                             <asp:ListItem Value="10">10</asp:ListItem>
                                             <asp:ListItem Value="25">25</asp:ListItem>
                                             <asp:ListItem Value="50">50</asp:ListItem>
@@ -192,13 +192,13 @@
             </div>
 
             <!-- Add Modal -->
-            <div class="modal fade" id="addModal" data-backdrop="static" data-keyboard="false">
+            <div class="modal fade" id="confirmationModal" data-backdrop="static" data-keyboard="false">
                 <div class="modal-dialog">
                     <div class="modal-content">
 
                         <!-- Modal Header -->
                         <div class="modal-header filter-header">
-                            <h3 class="modal-title modal-header-stylez">Add Event</h3>
+                            <h3 class="modal-title modal-header-stylez">Confirm Deletion</h3>
                             <button type="button" class="close modal-exit-btn-stylez" data-dismiss="modal">&times;</button>
                         </div>
 
@@ -216,32 +216,12 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                               <label for="eventType">Event</label> 
-                                <asp:TextBox ID="eventTypeAddTxt"  name="eventType" type="text" placeholder="Event" class="form-control input-md" runat="server"></asp:TextBox>   
-                            </div>
-
-                            <div class="form-group">
-                               <label for="eventLocation">Event Location</label> 
-                                <asp:TextBox ID="eventLocationAddTxt" name="eventLocation" type="text" placeholder="Location" class="form-control input-md" runat="server"></asp:TextBox>   
-                            </div>
-
-                            <div class="form-group">
-                               <label for="eventDate">Event Date</label> 
-                                <asp:TextBox ID="eventDateAddTxt" name="eventDate" type="text" placeholder="Date" class="form-control input-md" runat="server"></asp:TextBox>   
-                            </div>
-
-                            <div class="form-group">
-                               <label for="eventPrice">Price</label> 
-                                <asp:TextBox ID="eventPriceAddTxt" name="eventPrice" type="text" placeholder="Price" class="form-control input-md" runat="server"></asp:TextBox>   
-                            </div>
-
                         </div>
 
                         <!-- Modal Footer -->
                         <div class="modal-footer">
                             <button type="button" class="w3-btn modal-close-btn-stylez" data-dismiss="modal">Close</button>
-                            <asp:Button ID="Button4" class="w3-btn modal-submit-btn-stylez" runat="server" Text="Submit" OnClick="btnSubmitEdit_Click" />
+                            <asp:Button ID="btnConfirmDelete" class="w3-btn modal-submit-btn-stylez" runat="server" Text="Confirm" />
                         </div>
                     </div>
                 </div>
@@ -255,8 +235,8 @@
         }
 
         //Open Add Modal
-        function openAddModal() {
-            $('#addModal').modal('show');
+        function openConfirmationModal() {
+            $('#confirmationModal').modal('show');
         }
 
         //Slide transition 

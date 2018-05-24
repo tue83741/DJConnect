@@ -283,48 +283,12 @@ namespace DJ_Connect {
         protected global::System.Web.UI.WebControls.TextBox lastNameAddTxt;
         
         /// <summary>
-        /// eventTypeAddTxt control.
+        /// btnConfirmDelete control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox eventTypeAddTxt;
-        
-        /// <summary>
-        /// eventLocationAddTxt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox eventLocationAddTxt;
-        
-        /// <summary>
-        /// eventDateAddTxt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox eventDateAddTxt;
-        
-        /// <summary>
-        /// eventPriceAddTxt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox eventPriceAddTxt;
-        
-        /// <summary>
-        /// Button4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button4;
+        protected global::System.Web.UI.WebControls.Button btnConfirmDelete;
     }
 }

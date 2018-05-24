@@ -99,6 +99,7 @@
     background-color: #a2d6a2;
     border-radius: 100%;
     float: right;
+    overflow:auto;
     margin-top: 10px;
     margin-bottom: 20px;
 }
@@ -118,6 +119,11 @@
 .panel-body-stylez {
     margin-left: 0px;
     margin-right: 0px;
+}
+
+.ddlSelectPageSize {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .searchbar-stylez {

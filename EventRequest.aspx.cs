@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Net.Mail;
 
 namespace DJ_Connect
 {
@@ -14,7 +15,6 @@ namespace DJ_Connect
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void btnEnter_Click(object sender, EventArgs e)
@@ -92,6 +92,8 @@ namespace DJ_Connect
                     //lblDisplay.Text = "There was an error submitting your event request";
                 }
             }
+
+            
         }
     }
 
