@@ -1,0 +1,5 @@
+c:\users\stephan\documents\visual studio 2012\Projects\DJ Connect\DJ Connect\bin\DJ Connect.dll
+c:\users\stephan\documents\visual studio 2012\Projects\DJ Connect\DJ Connect\bin\DJ Connect.pdb
+c:\users\stephan\documents\visual studio 2012\Projects\DJ Connect\DJ Connect\obj\Debug\DJ Connect.csprojResolveAssemblyReference.cache
+c:\users\stephan\documents\visual studio 2012\Projects\DJ Connect\DJ Connect\obj\Debug\DJ Connect.dll
+c:\users\stephan\documents\visual studio 2012\Projects\DJ Connect\DJ Connect\obj\Debug\DJ Connect.pdb
