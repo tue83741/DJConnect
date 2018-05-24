@@ -37,17 +37,26 @@
                 required: true,
                 maxlength: 50
             },
+            ctl00$ContentPlaceHolder1$BookedDate: {
+                required: true
+            },
+            ctl00$ContentPlaceHolder1$StartTime: {
+                required: true
+            },
+            ctl00$ContentPlaceHolder1$EndTime: {
+                required: true
+            },
             ctl00$ContentPlaceHolder1$Phone: {
                 required: true,
                 maxlength: 50
             },
             ctl00$ContentPlaceHolder1$EventType: {
                 required: true,
-                maxLength: 50
+                maxlength: 10
             },
             ctl00$ContentPlaceHolder1$EventLocation: {
                 required: true,
-                maxLength: 50
+                maxlength: 50
             }
         },
         messages: {
@@ -64,13 +73,22 @@
                 required: "Please enter a last name.",
                 maxlength: "Last name can not be longer than 50 characters."
             },
+            ctl00$ContentPlaceHolder1$BookedDate: {
+                required: "Please select a date."
+            },
+            ctl00$ContentPlaceHolder1$StartTime: {
+                required: "Please select a start time."
+            },
+            ctl00$ContentPlaceHolder1$EndTime: {
+                required: "Please select an end time."
+            },
             ctl00$ContentPlaceHolder1$Phone: {
                 required: "Please enter a phone number.",
                 maxlength: "Phone number can not be longer than 50 characters."
             },
             ctl00$ContentPlaceHolder1$EventType: {
-                required: "Please enter an event type.",
-                maxlength: "Event type can not be longer than 50 characters."
+                required: "Please enter an event.",
+                maxlength: "Event can not be longer than 50 characters."
             },
             ctl00$ContentPlaceHolder1$EventLocation: {
                 required: "Please enter an event location.",
