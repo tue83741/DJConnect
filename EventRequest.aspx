@@ -15,10 +15,8 @@
         <div class="row">
             
             <div class="col-md-10 col-md-offset-1">
-                <div class="form-group">
-                    <div id="feedback" class="row" style="padding-top: 30px; display:none" runat="server">
-                        <div id="feedbackText" class="col-md-12" runat="server"></div>
-                    </div>
+                <div id="feedback" class="row" style="padding-top: 30px; display:none" runat="server">
+                    <div id="feedbackText" class="col-md-12" runat="server"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></div>
                 </div>
 
                 <div class="inputs">
@@ -37,17 +35,13 @@
                    <label for="Email">Email</label> 
                     <asp:TextBox ID="Email"  name="email" type="email" placeholder="Email" class="form-control input-md" runat="server" ></asp:TextBox>   
                 </div>
-                    <%--<div class="form-group">
-                    <label for="email">Testing</label> 
-                    <input id="email2"  name="email" type="email" placeholder="TESTING" class="form-control input-md" />  
-                    </div>--%>
                 <div class="form-group">
                    <label for="Phone">Phone</label> 
                     <asp:TextBox ID="Phone"  name="phone" type="tel" placeholder="Phone" class="form-control input-md" runat="server"></asp:TextBox>   
                 </div>
                 <div class="form-group">
                    <label for="BookedDate">Date</label> 
-                    <asp:TextBox ID="BookedDate"  name="BookedDate" type="date" placeholder="Date" class="form-control input-md" runat="server" ></asp:TextBox>   
+                    <asp:TextBox ID="BookedDate"  name="BookedDate" type="date" placeholder="Date" class="form-control input-md tryThis" runat="server" ></asp:TextBox>   
                 </div>
                 <div class="form-group">
                    <label for="StartTime">Start:</label> 
@@ -75,6 +69,88 @@
             </div>      
         </div>
     </div>
+
+            <!-- Confirmation Modal -->
+            <%--<div class="modal fade" id="confirmationModal" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header filter-header">
+                            <h3 id="modalHeader" runat="server" class="modal-title modal-header-stylez">Confirm Booking Request</h3>
+                            <button type="button" class="close modal-exit-btn-stylez" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal Body -->
+                        <div class="modal-body">
+
+                            <div class="form-group row">   
+                                <div class="col-md-6 col-sm-12">
+                                    <label for="firstNameConfirm">First</label> 
+                                    <asp:TextBox ID="firstNameConfirm"  name="firstName" type="text" placeholder="First Name" class="form-control input-md" runat="server"></asp:TextBox>   
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <label for="lastNameConfirm">Last</label> 
+                                    <asp:TextBox ID="lastNameConfirm"  name="lastName" type="text" placeholder="Last Name" class="form-control input-md" runat="server"></asp:TextBox> 
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                               <label for="emailConfirm">Event</label> 
+                                <asp:TextBox ID="emailConfirm"  name="eventType" type="email" placeholder="Email" class="form-control input-md" runat="server"></asp:TextBox>   
+                            </div>
+
+                            <div class="form-group">
+                               <label for="phoneConfirm">Event Location</label> 
+                                <asp:TextBox ID="phoneConfirm" name="eventLocation" type="tel" placeholder="Phone" class="form-control input-md" runat="server"></asp:TextBox>   
+                            </div>
+
+                            <div class="form-group">
+                               <label for="eventDateConfirm">Event Date</label> 
+                                <asp:TextBox ID="eventDateConfirm" name="eventDate" type="date" placeholder="Date" class="form-control input-md" runat="server"></asp:TextBox>   
+                            </div>
+
+                            <div class="form-group">
+                               <label for="eventStartConfirm">Price</label> 
+                                <asp:TextBox ID="eventStartConfirm" name="eventPrice" type="text" placeholder="Start" class="form-control input-md" runat="server"></asp:TextBox>   
+                            </div>
+
+                            <div class="form-group">
+                               <label for="eventEndConfirm">Price</label> 
+                                <asp:TextBox ID="eventEndConfirm" name="eventPrice" type="text" placeholder="End" class="form-control input-md" runat="server"></asp:TextBox>   
+                            </div>
+
+                            <div class="form-group">
+                               <label for="eventTypeConfirm">Price</label> 
+                                <asp:TextBox ID="eventTypeConfirm" name="eventPrice" type="text" placeholder="End" class="form-control input-md" runat="server"></asp:TextBox>   
+                            </div>
+
+                            <div class="form-group">
+                               <label for="eventLocationConfirm">Price</label> 
+                                <asp:TextBox ID="eventLocationConfirm" name="eventPrice" type="text" placeholder="Location" class="form-control input-md" runat="server"></asp:TextBox>   
+                            </div>
+
+                            <div class="form-group">
+                               <label for="commentsConfirm">Price</label> 
+                                <asp:TextBox ID="commentsConfirm" name="eventPrice" type="text" placeholder="Comments" class="form-control input-md" runat="server"></asp:TextBox>   
+                            </div>
+
+                            <div id="successAlert" runat="server" class="alert alert-success" style="display:none">
+                                Your changes have been <strong>submitted!</strong>
+                            </div>
+                            <div id="dangerAlert" runat="server" class="alert alert-danger" style="display:none">
+                                There was an <strong>error</strong> with your submission!
+                            </div>
+                        </div>
+
+                        <!-- Modal Footer -->
+                        <div class="modal-footer">
+                            <button id="btnEditModalClose" runat="server" type="button" class="w3-btn modal-close-btn-stylez" data-dismiss="modal" onserverclick="btnEditModalClose_Click" >Close</button>
+                            <asp:Button ID="btnSubmitEdit" class="w3-btn modal-submit-btn-stylez" runat="server" Text="Submit" OnClick="btnSubmitEdit_Click" />
+                        </div>
+                    </div>
+                </div>
+            </div>--%>
 </div>
 
     <script type="text/javascript">
@@ -83,6 +159,22 @@
             $("#book").addClass("active");
             $("#header").hide().slideDown(1500);
 
+            //Set minimum date to current date
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+            if (mm < 10) {
+                mm = '0' + mm
+            }
+
+            today = yyyy + '-' + mm + '-' + dd;
+            document.getElementById("ContentPlaceHolder1_BookedDate").setAttribute("min", today);
+
+            //Clear all input fields
             $("#clear").on('click', function () {
                 $(".inputs input").val('');
                 $("#ContentPlaceHolder1_feedback").css("display", "none");
@@ -92,5 +184,10 @@
             //Form validation
             $('#form1').validator();
         });
+
+        //Disable input fields
+        //function disableInputs() {
+        //    $(".inputs input").attr("disabled", "disabled");
+        //}
     </script>
 </asp:Content>

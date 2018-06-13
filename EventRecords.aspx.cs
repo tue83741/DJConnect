@@ -224,27 +224,27 @@ namespace DJ_Connect
                 DataTable searchedAndFiltered = (DataTable)ViewState["FilteredOnSearchSet"];
                 searchedAndFiltered.DefaultView.Sort = ViewState["SortExpr"].ToString();
                 //gvDivisions.DataSource = searchedAndFiltered.DefaultView;
-                //lblResults.InnerHtml = "Results for " + "\"" + txtSearch.Value + "\" " + "<span style=\"color:#899197\">(" + searchedAndFiltered.DefaultView.Count.ToString() + ")</span>";
-                //results.Style.Remove("display");
                 returnView = searchedAndFiltered.DefaultView;
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "getSearchResults();", true);
             }
             else if (searching && !filtering)
             {
                 DataTable searched = (DataTable)ViewState["SearchTable"];
-                searched.DefaultView.Sort = ViewState["SortExpr"].ToString();
+                searched.DefaultView.Sort = ViewState["SortExpr"].ToString();         
                 //gvDivisions.DataSource = searched.DefaultView;
-                //lblResults.InnerHtml = "Results for " + "\"" + txtSearch.Value + "\" " + "<span style=\"color:#899197\">(" + searched.DefaultView.Count.ToString() + ")</span>";
-                //results.Style.Remove("display");
                 returnView = searched.DefaultView;
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "getSearchResults();", true);
             }
             else if (!searching && filtering)
             {
                 DataTable filtered = (DataTable)ViewState["FilteredOnDefaultSet"];
                 filtered.DefaultView.Sort = ViewState["SortExpr"].ToString();
                 //gvDivisions.DataSource = filtered.DefaultView;
-                //lblResults.InnerHtml = "Results " + "<span style=\"color:#899197\">(" + filtered.DefaultView.Count.ToString() + ")</span>";
-                //results.Style.Remove("display");
                 returnView = filtered.DefaultView;
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "getSearchResults();", true);
             }
             else
             {
@@ -284,18 +284,21 @@ namespace DJ_Connect
 
             if (searching && !filtering)
             {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "getSearchResults();", true);
                 //results.Style.Remove("display");
                 //lblResults.InnerHtml = "Results for " + "\"" + txtSearch.Value + "\" " + "<span style=\"color:#899197\">(" + ds.Tables[0].DefaultView.Count.ToString() + ")</span>";
             }
             else if (!searching && filtering)
             {
                 DataTable filtered = (DataTable)ViewState["FilteredOnDefaultSet"];
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "getSearchResults();", true);
                 //results.Style.Remove("display");
                 //lblResults.InnerHtml = "Results " + "<span style=\"color:#899197\">(" + filtered.DefaultView.Count.ToString() + ")</span>";
             }
             else if (searching && filtering)
             {
                 DataTable searchedAndFiltered = (DataTable)ViewState["FilteredOnSearchSet"];
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "getSearchResults();", true);
                 //results.Style.Remove("display");
                 //lblResults.InnerHtml = "Results for " + "\"" + txtSearch.Value + "\" " + "<span style=\"color:#899197\">(" + searchedAndFiltered.DefaultView.Count.ToString() + ")</span>";
             }
@@ -385,9 +388,33 @@ namespace DJ_Connect
 
         }
 
+        protected void ddlSelectPageSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlSelectPageSize.SelectedValue.Equals("All"))
+            {
+                gvEventRecords.AllowPaging = false;
+                this.Filter();
+                gvEventRecords.DataBind();
+            }
+            else
+            {
+                gvEventRecords.AllowPaging = true;
+                gvEventRecords.PageSize = int.Parse(ddlSelectPageSize.SelectedValue);
+                this.Filter();
+                gvEventRecords.DataBind();
+            }
+        }
+
         protected void gvEventRecords_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void gvEventRecords_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            this.Filter();
+            gvEventRecords.PageIndex = e.NewPageIndex;
+            gvEventRecords.DataBind();
         }
 
         protected void gvEventRecords_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -421,7 +448,6 @@ namespace DJ_Connect
                 {
                     dangerAlert.Style.Remove("display");
                 }
-
             }
 
             lstEventTypes.DataSource = eventRecordsData.GetEventTypes();
@@ -432,6 +458,7 @@ namespace DJ_Connect
             gvEventRecords.DataSource = eventRecordsData.GetEventRecords();
             gvEventRecords.DataBind();
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Disable", "disableInputs();", true);
         }
 
         //Close event record edit modal

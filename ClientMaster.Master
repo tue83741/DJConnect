@@ -22,6 +22,9 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <!-- Emoji CSS -->
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="CSS/MainStyles.css" rel="stylesheet" />
     <link href="CSS/Stylez.css" rel="stylesheet" />
@@ -57,10 +60,10 @@
                     <div class="collapse navbar-collapse" id="myNavbar" style="font-family:'Comic Sans MS'">
                         <ul class="nav navbar-nav">
                             <li id="home" class="active"><a href="ClientLandingPage.aspx">Home</a></li>
-                            <li id="about"><a href="#">About</a></li>
+                            <li id="about"><a href="About.aspx">About</a></li>
                             <li id="book"><a href="EventRequest.aspx">Booking</a></li> 
-                            <li id="mixes"><a href="#">Mixes</a></li>
-                            <li id="contact"><a href="#">Contact</a></li> 
+                            <li id="mixes"><a href="Mixes.aspx">Mixes</a></li>
+                            <li id="contact"><a href="Contact.aspx">Contact</a></li> 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <a href="https://Facebook.com/ThisIsDjSlice"><img src="img/FBIcon.png" class="imgStyle"/></a>

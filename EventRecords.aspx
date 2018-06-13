@@ -55,9 +55,8 @@
                 <button id="Button3" class="btn btn-add-event-stylez" runat="server" onserverclick="addEventRecord_Click"><span class="glyphicon glyphicon-plus"></span></button>
             </div>
             </div>
-
+                
             <!-- Table Panel -->
-
             <div class="col-md-9 col-sm-12 panel panel-default card-stylez-2" style="border-top-left-radius:0px; border-top-right-radius: 0px; padding-left: 0px; padding-right: 0px">
                 <h4 class="filter-header">Event Records:</h4>
                 <div class="panel-body panel-body-stylez">
@@ -68,7 +67,7 @@
                                     <div id="dataTables-example_length">
                                         <label style="display:inline-flex">
                                             Show
-                                        <asp:DropDownList runat="server" AutoPostBack="true" ID="ddlSelectPageSize" CssClass="form-control input-sm ddlSelectPageSize">
+                                        <asp:DropDownList runat="server" OnSelectedIndexChanged="ddlSelectPageSize_SelectedIndexChanged" AutoPostBack="true" ID="ddlSelectPageSize" CssClass="form-control input-sm ddlSelectPageSize">
                                             <asp:ListItem Value="10">10</asp:ListItem>
                                             <asp:ListItem Value="25">25</asp:ListItem>
                                             <asp:ListItem Value="50">50</asp:ListItem>
@@ -92,12 +91,15 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                        </div>
+                        <div class="row">
+                            <label id="lblSearchResults" class="col-xs-12" style="padding-bottom: 10px;"></label>
+                        </div>
 
 
                     <!-- Gridview -->
                     <div class="table-responsive">
-                    <asp:GridView ID="gvEventRecords" PagerStyle-CssClass="pagination" runat="server" AllowSorting="True" OnSorting="gvEventRecords_Sorting" AutoGenerateColumns="False" DataKeyNames="eventRecordID" AllowPaging="True" CssClass="table table-striped table-bordered table-hover dataTable no-footer" style="overflow-x:auto" OnRowCommand="gvEventRecords_RowCommand" OnSelectedIndexChanged="gvEventRecords_SelectedIndexChanged" OnRowDataBound="gvEventRecords_RowDataBound">
+                    <asp:GridView ID="gvEventRecords" PagerStyle-CssClass="" runat="server" AllowSorting="True" OnSorting="gvEventRecords_Sorting" AutoGenerateColumns="False" DataKeyNames="eventRecordID" AllowPaging="True" CssClass="table table-striped table-bordered table-hover dataTable no-footer" style="overflow-x:auto; border-collapse: unset" OnRowCommand="gvEventRecords_RowCommand" OnSelectedIndexChanged="gvEventRecords_SelectedIndexChanged" OnPageIndexChanging="gvEventRecords_PageIndexChanging" OnRowDataBound="gvEventRecords_RowDataBound">
                     <Columns>
                         <asp:BoundField DataField="firstName" HeaderText="First" SortExpression="firstName" />
                         <asp:BoundField DataField="lastName" HeaderText="Last" SortExpression="lastName" />
@@ -113,7 +115,7 @@
 
                         <asp:TemplateField HeaderText="Delete">
                             <ItemTemplate>
-                                <asp:ImageButton CommandName="deleteRecord" CssClass="btn btn-sm" ID="btnDeleteEventRecord" runat="server" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ImageUrl="Img/DeleteIcon.png" style="padding:0px; width:28px; height:28px;" />
+                                <asp:ImageButton CommandName="deleteRecord" CssClass="btn btn-sm" ID="btnDeleteEventRecord" runat="server" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ImageUrl="Img/DeleteIcon.png" style="padding:0px; width:28px; height:28px;" OnClientClick="return confirm('Are you sure you want to delete this record?')" />
                             </ItemTemplate>
                         </asp:TemplateField>
 
@@ -122,9 +124,10 @@
                             <ItemStyle CssClass="hiddencol"></ItemStyle>
                         </asp:BoundField>
                     </Columns>
-                    <PagerStyle CssClass="pagination"></PagerStyle>
+                    <PagerStyle CssClass="pagination-ys"></PagerStyle>
+                        <PagerSettings  Mode="NextPreviousFirstLast" PreviousPageText="Previous" NextPageText="Next"/>
                     </asp:GridView>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -142,7 +145,7 @@
 
                         <!-- Modal Body -->
                         <div class="modal-body">
-
+                            <div class="inputs">
                             <div class="form-group row">   
                                 <div class="col-md-6 col-sm-12">
                                     <label for="firstName">First</label> 
@@ -173,7 +176,7 @@
                                <label for="eventPrice">Price</label> 
                                 <asp:TextBox ID="eventPrice" name="eventPrice" type="text" placeholder="Price" class="form-control input-md" runat="server"></asp:TextBox>   
                             </div>
-
+                            </div>
                             <div id="successAlert" runat="server" class="alert alert-success" style="display:none">
                                 Your changes have been <strong>submitted!</strong>
                             </div>
@@ -239,6 +242,42 @@
             $('#confirmationModal').modal('show');
         }
 
+        //Display search results information
+        function getSearchResults() {
+            $(document).ready(function () {
+                var results = -1;
+                var searchText = document.getElementById("ContentPlaceHolder1_txtSearch").value + ' ';
+                var filterOptions = '';
+
+                var rows = document.getElementById("ContentPlaceHolder1_gvEventRecords").rows.length;
+
+                for (var i = 0; i < rows; i++) {
+                    results++;
+                }
+
+
+                var filter = document.getElementById("ContentPlaceHolder1_lstEventTypes");
+
+                for (j = 0; j < filter.options.length; j++) {
+                    if (filter.options[j].selected)
+                        filterOptions += filter.options[j].text + ' ';
+                }
+                document.getElementById("lblSearchResults").innerText = 'Search results: ' + searchText + filterOptions + ' (' + results + ')';
+            });
+        }
+
+        //Disable input fields
+        function disableInputs() {
+            $(".inputs input").attr("disabled", "disabled");
+            $("#ContentPlaceHolder1_btnSubmitEdit").attr("disabled", "disabled");
+        }
+
+
+        //Display number of search results
+        //$("#ContentPlaceHolder1_btnSearch").on('click', function () {
+        //    getSearchResults();
+        //});
+
         //Slide transition 
         function slidez() {
             $(document).ready(function () {
@@ -279,12 +318,6 @@
                     $(this).parent().find(".filter-arrow").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
             });
         });
-
-        //$('#form1').submit(function () {
-        //    // your code here
-        //    alert("this worked");
-        //});
-
     </script>
     </div>
 </asp:Content>

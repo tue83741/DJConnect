@@ -59,18 +59,22 @@
   <ItemGroup>
     <Content Include="CSS\MainStyles.css" />
     <Content Include="CSS\Stylez.css" />
+    <Content Include="ErrorPages\Oops.aspx" />
     <Content Include="img\blk.jpg" />
     <Content Include="img\DeleteIcon.png" />
     <Content Include="img\EditIcon.png" />
     <Content Include="img\FBIcon.png" />
     <Content Include="img\InstaIcon.png" />
+    <Content Include="img\MixcloudHeaderLogo.png" />
     <Content Include="img\SliceBanner.jpg" />
     <Content Include="img\SliceLogo.jpg" />
     <Content Include="img\SliceLogoBlack.png" />
     <Content Include="img\SliceLogo_Transparent.png" />
+    <Content Include="img\SliceSetup.jpg" />
     <Content Include="img\TwitterIcon.png" />
     <Content Include="img\vinylpic.png" />
     <Content Include="img\vinylpicgreen.png" />
+    <Content Include="img\YouTubeHeaderLogo.png" />
     <Content Include="img\YouTubeIcon.png" />
     <Content Include="Scripts\stay-alive.js" />
     <Content Include="Scripts\validate.js" />
@@ -78,6 +82,10 @@
     <Content Include="EventRecords.aspx" />
     <Content Include="EventRequest.aspx" />
     <Content Include="ClientLandingPage.aspx" />
+    <Content Include="About.aspx" />
+    <Content Include="Mixes.aspx" />
+    <Content Include="Contact.aspx" />
+    <Content Include="ManageEventRequests.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminMaster.Master.cs">
@@ -93,6 +101,13 @@
     </Compile>
     <Compile Include="ClientMaster.Master.designer.cs">
       <DependentUpon>ClientMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPages\Oops.aspx.cs">
+      <DependentUpon>Oops.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\Oops.aspx.designer.cs">
+      <DependentUpon>Oops.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormValidation.cs" />
     <Compile Include="GetData.cs" />
@@ -119,6 +134,34 @@
     <Compile Include="ClientLandingPage.aspx.designer.cs">
       <DependentUpon>ClientLandingPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mixes.aspx.cs">
+      <DependentUpon>Mixes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mixes.aspx.designer.cs">
+      <DependentUpon>Mixes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManageEventRequests.aspx.cs">
+      <DependentUpon>ManageEventRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageEventRequests.aspx.designer.cs">
+      <DependentUpon>ManageEventRequests.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminMaster.Master" />
@@ -130,6 +173,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
