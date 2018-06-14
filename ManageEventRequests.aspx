@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <!-- Fields to hold the state of filter panels across postbacks -->
+    <!-- Fields to hold the state of filter panels across postbacks -->
     <asp:HiddenField ID="rulesState" runat="server"/>
     <asp:HiddenField ID="eventPriceState" runat="server"/>
     
@@ -39,7 +39,7 @@
 
                 <!-- Table Panel -->
                 <div class="col-md-9 col-sm-12 panel panel-default card-stylez-2" style="border-top-left-radius:0px; border-top-right-radius: 0px; padding-left: 0px; padding-right: 0px">
-                    <h4 class="filter-header">Event Records:</h4>
+                    <h4 class="filter-header">Event Requests:</h4>
                     <div class="panel-body panel-body-stylez">
 
                         <!-- Entries & Search -->
@@ -115,11 +115,6 @@
         //Open Edit Modal
         function openModal() {
             $('#editModal').modal('show');
-        }
-
-        //Open Add Modal
-        function openConfirmationModal() {
-            $('#confirmationModal').modal('show');
         }
 
         //Display search results information
